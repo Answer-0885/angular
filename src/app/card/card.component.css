@@ -1,0 +1,43 @@
+.card {
+    padding: .5rem 1rem;
+    border: 1px dashed red;
+    margin-bottom: 1rem;
+}
+h2{
+    margin-bottom: .5rem;
+}
+.buttons{
+  margin-bottom: 0.5rem;
+}
+.text{
+  font-size: 1.5rem;
+}
+.blue{
+  color: blue;
+}
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+
+
+/* template: `
+<div class="card">
+     <h2>Card Component</h2>
+     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, soluta.</p>
+</div>
+`,
+styles: [
+  `
+    .card {
+        padding: .5rem 1rem;
+        border: 1px dashed red;
+        margin-bottom: 1rem;
+    }
+    h2{
+        margin-bottom: .5rem;
+    }
+  `
+] */
