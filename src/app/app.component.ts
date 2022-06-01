@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
-
-export interface Card{
-  title:string
-  text:string
-}
-
+import { Component, OnInit} from '@angular/core';
+import { HttpService} from './http.service';
+import { Fruit } from './fruit';
+   
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: [HttpService]
 })
-export class AppComponent {
-  toggle=true
+export class AppComponent implements OnInit { 
+   
+    
+    modal = false
+ 
 
-  cards: Card[] = [
-    {title: 'Card 1', text: 'This is card number 1'},
-    {title: 'This is card 2', text: 'This is card number 2'},
-    {title: 'Last Card!', text: 'This is card number 1'}
-  ]
-
-  toggleCards(){
-    this.toggle = !this.toggle
-  }
+    fruits: Fruit[]=[];
+    
+     
+    constructor(private httpService: HttpService){}
+      
+    ngOnInit(){
+        this.httpService.getData().subscribe((data: any) => this.fruits=data["results"]);
+        
+    }
 }

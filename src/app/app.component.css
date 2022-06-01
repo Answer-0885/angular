@@ -1,8 +1,8 @@
-.container{
-    max-width: 800px;
-    margin: 0 auto;
-    padding-top: 3rem;
+.fruits{
+    text-decoration: none;
+    color:blueviolet;
+     font-weight: 700;
 }
-h1{
-    text-align: center;
+.header{
+    color: rgba(255, 0, 212, 0.87);
 }

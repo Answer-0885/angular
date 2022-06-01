@@ -1,22 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
-import { FormComponent } from './form/form.component';
-
+import { FormsModule }   from '@angular/forms';
+import { AppComponent }   from './app.component';
+ 
+import { HttpClientModule }   from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
+ 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardComponent,
-    FormComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports:      [ BrowserModule, FormsModule, HttpClientModule],
+    declarations: [ AppComponent, ModalComponent],
+    bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
