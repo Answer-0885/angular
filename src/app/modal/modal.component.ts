@@ -1,6 +1,14 @@
-import { Component,EventEmitter, Input, Output, OnInit } from '@angular/core';
-//import { EventEmitter } from 'stream';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+export interface Berry{
+  growth_time:number
+  id:number
+  max_harvest:number
+  name:string
+  size:number
+  smoothness:number
+} 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -8,18 +16,27 @@ import { Component,EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() title='Информация о продукте'
+  // Принимаем переменную с данными выбранного фрукта
+  @Input() public fruit: any;
+
+  // Закрытие модального окна
   @Output() close = new EventEmitter()
 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  // Метод который вызывается при нажатии на кнопку "выбрать"
+  public change() {
+    this.onChanged.emit();
   }
-  // setCapital() {
-  //   const berry = {
-  //     name: 
-  //   }
-  // }
+  // Отправляем метод в родительский компонент для связки
+  @Output() onChanged = new EventEmitter();
 
-}
+    // Перебираем массив и выводим список характеристик выбранного фрукта в модальное окно
+  berrys: Berry[]=[];
+    
+  constructor(private http: HttpClient){}
+  
+  ngOnInit(){   
+    // Так как мы перебираем объект, который получаем через url, то нам необходимо привести данные в виде массива.Для этого используем метод Array().
+        this.http.get(this.fruit.url).subscribe((res:any)=>{this.berrys = Array(res);});       
+  }
+}         
+

@@ -1,9 +1,37 @@
 <div class="backdrop"></div>
 <div class="modal">
     <nav class="navbar">
-        <h1>{{title}}</h1>
+        <h1>Информация о продукте</h1>
     </nav>
-    <span>Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-    <button class="btn" type="button">Выбрать</button>
-    <button class="btn" (click)="close.emit()">Закрыть</button>
+    <!-- Список, который мы получаем в модальном окне -->
+    <ul>
+        <li *ngFor="let berry of berrys" class="list">
+            <a href="#" class="fruits">        
+            Имя:{{berry?.name}}</a>
+            <br>
+            <a href="#" class="fruits">        
+            Id:{{berry?.id}}</a>
+            <br>                
+            <a href="#" class="fruits">        
+            Размер:{{berry?.size}}</a>
+            <br>
+            <a href="#" class="fruits">        
+            Гладкость:{{berry?.smoothness}}</a> 
+            <br> 
+            <a href="#" class="fruits">        
+            Время роста:{{berry?.growth_time}}</a> 
+            <br>   
+            <a href="#" class="fruits">        
+            Максимальный урожай:{{berry?.max_harvest}}</a>
+        </li>
+    </ul>
+
+    <button class="btn" type="button"
+     (click)="change()"
+     (click)="close.emit()"
+     >Выбрать {{fruit.name}}?</button>
+
+    <button class="btn close"
+     (click)="close.emit()"
+     >Закрыть</button>
 </div>
